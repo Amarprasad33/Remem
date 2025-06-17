@@ -31,15 +31,35 @@ export async function signup(formData: FormData) {
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  }
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+  const name = formData.get('name') as string
 
-  const { error } = await supabase.auth.signUp(data)
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { name }
+    }
+  })
   console.log("erro=- signup", error)
   if (error) {
     redirect('/error')
+  }
+  console.log("data-signup--", data);
+  // Save name into 'profiles' table manually
+  if (data.user) {
+    const { error: profileError } = await supabase.from('profiles').insert([
+      {
+        id: data.user.id, // match auth user id
+        name,
+        email,
+      },
+    ])
+    if (profileError) {
+      console.error("Error creating profile:", profileError)
+      redirect('/error')
+    }
   }
   console.log("success")
   revalidatePath('/', 'layout')
