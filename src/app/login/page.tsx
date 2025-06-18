@@ -9,7 +9,6 @@ export default function LoginPage() {
         <label htmlFor="password">Password:</label>
         <input className='outline-1 outline-neutral-700 p-4 rounded-xl' id="password" name="password" type="password" required />
         <button className='px-6 py-2 bg-slate-400' formAction={login}>Log in</button>
-        {/* <button className='px-6 py-2 bg-slate-400' formAction={signup}>Sign up</button> */}
       </form>
     </div>
   )
