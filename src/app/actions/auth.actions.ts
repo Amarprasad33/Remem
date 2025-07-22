@@ -65,4 +65,9 @@ export async function signup(formData: FormData) {
     redirect('/')
 }
 
+export async function logout() {
+    const supabase = createClient()
+    await (await supabase).auth.signOut();
+    redirect('/')
+}
 // Upon enabling of RLS the data is not getting inserted.
