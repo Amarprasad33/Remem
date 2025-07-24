@@ -27,6 +27,7 @@ export async function login(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
+    console.log("signup-formData", formData);
     const supabase = await createClient()
 
     // type-casting here for convenience
