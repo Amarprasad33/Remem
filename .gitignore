@@ -23,7 +23,7 @@
 # misc
 .DS_Store
 *.pem
-/.cursor
+.cursor/prd.txt
 
 # debug
 npm-debug.log*
