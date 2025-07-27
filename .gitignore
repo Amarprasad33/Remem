@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 .cursor/prd.txt
+.cursor/schema.md
 
 # debug
 npm-debug.log*
