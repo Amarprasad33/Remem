@@ -41,7 +41,7 @@ export default function SigninForm() {
 
     async function onSubmit(data: SigninSchemaType) {
         try {
-            console.log("submit-data", data);
+            // console.log("submit-data", data);
 
             const formData = new FormData();
             formData.append('email', data.email);
@@ -49,12 +49,13 @@ export default function SigninForm() {
             const response = await login(formData);
             console.log('response', response);
             // if (response.status === 200) {
-            //     toast("Signup successful. Welcome!")
+            //     toast("Signin successful. Welcome!")
             //     router.push('/');
             // } else {
             //     throw new Error('Signup failed');
             // }
         } catch (error: unknown) {
+            console.log("error", error);
             toast("Signin failed", {
                 description: 'Something went wrong!',
                 action: {

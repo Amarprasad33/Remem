@@ -22,6 +22,12 @@ export async function login(formData: FormData) {
         redirect('/error')
     }
 
+    if (!error) {
+        if (res.data.user) {
+            console.log("---------- Successful signin ----------")
+        }
+    }
+
     revalidatePath('/', 'layout')
     redirect('/')
 }
