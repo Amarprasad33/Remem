@@ -5,11 +5,13 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-  
+
     return (
-        <div>
+        <div className="flex">
             <Sidebar />
-            {children}
+            <div>
+                {children}
+            </div>
         </div>
     )
 }
