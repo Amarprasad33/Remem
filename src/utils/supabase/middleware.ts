@@ -36,9 +36,13 @@ export async function updateSession(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser()
+  // console.log("----user----", user);
+  const path = request.nextUrl.pathname;
+  console.log("path---------------------- > ", path);
 
   if (
     !user &&
+    path !== '/' && // allow root without redirect to unathenticated users
     !request.nextUrl.pathname.startsWith('/signin') &&
     !request.nextUrl.pathname.startsWith('/signup') &&
     !request.nextUrl.pathname.startsWith('/auth')

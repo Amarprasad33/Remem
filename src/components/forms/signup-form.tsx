@@ -4,7 +4,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
-import { signupFormSchema, SignupSchemaType } from '@/lib/schema/atuhSchema';
+import { signupFormSchema, SignupSchemaType } from '@/lib/schema/authSchema';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -27,10 +27,6 @@ export default function SignupForm() {
     const [passwordVisible, setPasswordVisible] = useState(false);
     //   const { toast } = useToast();
     const router = useRouter();
-
-    const [brands, setBrands] = useState<{ value: string; label: string }[]>([]);
-    const [modelsByBrand, setModelsByBrand] = useState<{ [brand: string]: string[] }>({});
-    const [models, setModels] = useState<{ value: string; label: string }[]>([]);
 
     const form = useForm<SignupSchemaType>({
         resolver: zodResolver(signupFormSchema),
